@@ -64,7 +64,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            sudo docker pull grachevvladislav/${{ github.event.repository
-            .name }}
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 grachevvladislav/${{ github.event.repository.name }}
+            sudo docker run --rm -d -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
