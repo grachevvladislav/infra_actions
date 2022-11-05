@@ -64,8 +64,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            # Выполняет pull образа с DockerHub
             sudo docker pull ${{ github.event.actor.login }}/${{ github.event.repository.name }}
-            # остановка всех контейнеров
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 ${{ github.event.actor.login }}/${{ github.event.repository.name }}
+            # sudo docker stop $(sudo docker ps -a -q)
+            # sudo docker run --rm -d -p 5000:5000 ${{ github.event.actor.login }}/${{ github.event.repository.name }}
